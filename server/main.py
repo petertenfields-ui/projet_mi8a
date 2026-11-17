@@ -9,7 +9,7 @@ templates = Jinja2Templates(directory=str(BASE_DIR/"templates"))
 
 app = FastAPI()
 app.include_router(websocket_router)
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/static", StaticFiles(directory=str(BASE_DIR/"static")), name="static")
 @app.get("/")
 async def hello(request:Request):
     return templates.TemplateResponse(
