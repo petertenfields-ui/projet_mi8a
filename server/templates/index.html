@@ -1,13 +1,12 @@
 <!doctype html>
 <html>
-    <head>
-        <link rel="stylesheet" href="/static/css/style.css">
-        <title> {{title}} - Ma page</title>
-    </head>
     <body>
-        <h1>Hello, {{user.username}}! </h1>
+        <h1>Hello, {{user.username}}! bruh</h1>
+        <canvas id = "canvas1"></canvas>
+       
+        <link rel="stylesheet" href="{{url_for('static', path = '/css/style.css')}}">
+        <script src="{{ url_for('static', path='/js/waves.js') }}" type = "module" ></script>
+        <script src="{{ url_for('static', path='/js/app.js') }}" type = "module"></script>
         
-        <script src="{{ url_for('static', path='/js/test.js') }}"></script>
-        <script src="{{ url_for('static', path='/js/app.js') }}"></script>
     </body>
 </html>

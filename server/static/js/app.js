@@ -1,3 +1,8 @@
+
+import {run} from "./waves.js";
+
+
+
 const socket = new WebSocket(`ws://${window.location.host}/ws/visual`)
 
 socket.onopen = () => {
@@ -9,6 +14,7 @@ socket.onmessage = (event) =>{
     //test:
     console.log("bien reçu", audio);
     // appeler la fonction pour dessiner
+    run(audio["a"]);
 };
 socket.onerror = (error) => {
     console.log('erreur', error);
