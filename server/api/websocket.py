@@ -6,14 +6,17 @@ connections : set[WebSocket] = set()
 async def receive_audio(websocket:WebSocket):
     #Envoi de l'audio
     await websocket.accept()
+    print("audio connect")
     try:
         while True:
             data = await websocket.receive_json()
+            print("audio received")
             disconnected = []
             for browser in connections:
                 try:
                     await browser.send_json(data)
                 except Exception:
+                    print("browser sisconnect")
                     disconnected += [browser]
             for browser in disconnected:
                 connections.discard(browser)
@@ -24,8 +27,10 @@ async def receive_audio(websocket:WebSocket):
 async def visualisation(websocket:WebSocket):
     await websocket.accept()
     connections.add(websocket)
+    print("brosw connected")
     try:
         while True:
             await websocket.receive_text()
     except WebSocketDisconnect:
+        print("brows disconnected")
         connections.discard(websocket)

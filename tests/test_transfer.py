@@ -11,10 +11,10 @@ async def main():
         counter = 0
         while True:
             features = {
-                "volume":abs(math.sin(counter*0.1)),
-                "bass":abs(math.sin(counter*0.2)),
-                "mid":abs(math.sin(counter*0.3)),
-                "treble":abs(math.sin(counter*0.4))
+                "a":abs(math.sin(counter*0.1)),
+                "b":abs(math.sin(counter*0.2)),
+                "c":abs(math.sin(counter*0.3)),
+                "d":abs(math.sin(counter*0.4))
             }
             await websocket.send(json.dumps(features))
             print("Sent",features)

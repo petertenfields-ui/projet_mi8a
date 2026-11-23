@@ -13,8 +13,12 @@ app.mount("/static", StaticFiles(directory=str(BASE_DIR/"static")), name="static
 @app.get("/")
 async def hello(request:Request):
     return templates.TemplateResponse(
-        "index.html",
-        {"request" : request}
+        request = request,
+        name = "index.html",
+        context = {
+            "title": "Visualisation",
+            "user":{"username":"Machin"}
+        }
         )
 if __name__ == "__main__":
     uvicorn.run(app)

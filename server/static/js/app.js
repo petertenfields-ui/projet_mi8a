@@ -7,10 +7,10 @@ socket.onopen = () => {
 socket.onmessage = (event) =>{
     const audio = JSON.parse(event.data);
     //test:
-    console.log("bien reçu", data);
+    console.log("bien reçu", audio);
     // appeler la fonction pour dessiner
 };
-socket.onerror = () => {
+socket.onerror = (error) => {
     console.log('erreur', error);
 }
 socket.onclose = () => {
